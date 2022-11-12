@@ -9,9 +9,9 @@ type Transactions struct {
 	ServiceID    int64     `json:"service_id"`
 	OrderID      int64     `json:"order_id"`
 	Datetime     time.Time `json:"datetime"`
-	Amount       int64     `json:"amount"`
-	StartDeposit int64     `json:"start_deposit"`
-	EndDeposit   int64     `json:"end_deposit"`
-	Event        int64     `json:"event"`
+	Amount       float64   `json:"amount"`
+	StartDeposit float64   `json:"start_deposit"`
+	EndDeposit   float64   `json:"end_deposit"`
+	Event        string    `json:"event"`
 	Message      string    `json:"message"`
 }

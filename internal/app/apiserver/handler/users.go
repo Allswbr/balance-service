@@ -9,7 +9,7 @@ import (
 
 // Регистрация нового пользователя
 func (h *Handler) createUser(c *gin.Context) {
-	user := &model.Users{}
+	user := &model.User{}
 
 	id, err := h.Services.CreateUser(user)
 	if err != nil {

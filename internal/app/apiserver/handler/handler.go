@@ -32,8 +32,8 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	}
 
 	// Дополнительные роуты для удобства работы с пользователями
-	router.POST("/users/auth/sign-up", h.signUp) // Регистрация нового пользователя
-	router.GET("/users", h.getAllUsers)          // Просмотр всех существующих пользователей
+	router.POST("/users/auth/create_user", h.createUser) // Регистрация нового пользователя
+	router.GET("/users", h.getAllUsers)                  // Просмотр всех существующих пользователей
 
 	return router
 }

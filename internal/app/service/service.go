@@ -1,9 +1,12 @@
 package service
 
-import "github.com/Allswbr/balance-service/model"
+import (
+	"github.com/Allswbr/balance-service/internal/app/repository"
+	"github.com/Allswbr/balance-service/model"
+)
 
-// Users - интерфейс для списка методов с пользователями в слое сервиса
-type Users interface {
+// User - интерфейс для списка методов с пользователями в слое сервиса
+type User interface {
 	CreateUser(*model.User) (int64, error)
 	GetAllUsers() ([]*model.User, error)
 	GetUserByID(userID int64) (*model.User, error)
@@ -15,6 +18,13 @@ type Account interface {
 
 // Service — отвечает за бизнес логику и ее переиспользование между компонентами
 type Service struct {
-	Users
+	User
 	Account
+}
+
+func NewService(repo *repository.Repository) *Service {
+	return &Service{
+		User:    NewUserService(repo.User),
+		Account: nil,
+	}
 }

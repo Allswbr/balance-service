@@ -47,7 +47,7 @@ func (up *UserPostgres) GetAllUsers() ([]*model.User, error) {
 func (up *UserPostgres) GetUserByID(userID int64) (*model.User, error) {
 
 	user := &model.User{}
-	if err := up.db.Get(user, "SELECT * FROM users WHERE id=$1", userID); err != nil {
+	if err := up.db.Get(user, "SELECT * FROM users WHERE user_id=$1", userID); err != nil {
 		return nil, err
 	}
 

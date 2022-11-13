@@ -7,13 +7,14 @@ import (
 
 // User - интерфейс для списка методов с пользователями в слое репозитория
 type User interface {
-	CreateUser(*model.User) (int64, error)
+	CreateUser(user *model.User) (int64, error)
 	GetAllUsers() ([]*model.User, error)
 	GetUserByID(userID int64) (*model.User, error)
 }
 
 // Account - интерфейс для списка методов с банковским счетом пользователя в слое репозитория
 type Account interface {
+	GetBalanceByUserID(userID int64) (map[string]string, error)
 }
 
 // Repository — отвечает за получение данных из внешних источников, такие как база данных, api, локальное хранилище и пр.
@@ -26,6 +27,6 @@ type Repository struct {
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		User:    NewUserPostgres(db),
-		Account: nil,
+		Account: NewAccountPostgres(db),
 	}
 }

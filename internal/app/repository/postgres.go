@@ -18,6 +18,7 @@ type Config struct {
 
 // NewPostgresDB - конструктор БД PostgreSQL
 func NewPostgresDB(config *Config) (*sqlx.DB, error) {
+	fmt.Println(config)
 	dsn := fmt.Sprintf(
 		"host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
 		config.Host,

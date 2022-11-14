@@ -33,8 +33,10 @@ func (up *UserPostgres) CreateUser(user *model.User) (int64, error) {
 // Возвращает либо список пользователей, либо nil и ошибку
 func (up *UserPostgres) GetAllUsers() ([]*model.User, error) {
 
-	users := make([]*model.User, 0)
-	err := up.db.Select(&users, "SELECT (user_id, deposit_account, reserve_account) FROM users")
+	var users []*model.User
+	err := up.db.Select(&users, `SELECT * FROM users`)
+	// select user_id, deposit_account, reserve_account from users
+	// select user_id "user_id", deposit_account "deposit_account", reserve_account "reserve_account" from users
 	if err != nil {
 		return nil, err
 	}

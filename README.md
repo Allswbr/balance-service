@@ -12,16 +12,16 @@
 Пример тела запроса:
 ```json
 {
-    "user_id": 1,
-    "amount": 1020,
-	  "details": "премия"
+	"user_id": 1,
+	"amount": 1020,
+	"details": "премия"
 }
 ```
 
 Пример ответа сервера:
 ```json
 {
-    "message": "1020.00 were successfully deposited to user bank account"
+	"message": "1020.00 were successfully deposited to user bank account"
 }
 ```
 
@@ -30,7 +30,7 @@
 Пример тела запроса:
 ```json
 {
-  "user_id": 1,
+	"user_id": 1,
 	"service_id": 1,
 	"order_id": 1,
 	"amount": 100,
@@ -41,7 +41,7 @@
 Пример ответа сервера:
 ```json
 {
-    "message": "100.00 were successfully reserved from user deposit account"
+	"message": "100.00 were successfully reserved from user deposit account"
 }
 ```
 
@@ -50,7 +50,7 @@
 Пример тела запроса:
 ```json
 {
-  "user_id": 1,
+  	"user_id": 1,
 	"service_id": 1,
 	"order_id": 1,
 	"amount": 100,
@@ -61,7 +61,7 @@
 Пример ответа сервера:
 ```json
 {
-    "message": "100.00 were successfully take from user reserve account"
+	"message": "100.00 were successfully take from user reserve account"
 }
 ```
 
@@ -71,7 +71,7 @@
 Пример тела запроса:
 ```json
 {
-  "from_user_id" : 1,
+  	"from_user_id" : 1,
 	"to_user_id": 2,
 	"amount": 1000.99,
 	"details": "купи воды"
@@ -81,7 +81,7 @@
 Пример ответа сервера:
 ```json
 {
-    "message": "1000.99 were successfully transferred between users"
+	"message": "1000.99 were successfully transferred between users"
 }
 ```
 
@@ -93,15 +93,15 @@
 Пример тела запроса:
 ```json
 {
-    "year": 2022
-    "month": 11
+	"year": 2022
+	"month": 11
 }
 ```
 
 Пример ответа сервера:
 ```json
 {
-    "path": "report_2022_11.csv"
+	"path": "report_2022_11.csv"
 }
 ```
 
@@ -119,7 +119,7 @@
 Пример ответа сервера:
 ```json
 {
-    "id": 1
+	"id": 1
 }
 ```
 

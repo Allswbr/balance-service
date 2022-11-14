@@ -1,9 +1,18 @@
 .PHONY: build
 build:
-	go build -o ./bin/balance-service -v ./cmd/apiserver
+	docker-compose build
 
 run:
-	./bin/balance-service
+	docker-compose up
+
+stop:
+	docker-compose down
+
+migrate-up:
+	migrate -path ./schema -database 'postgres://postgres:0000@localhost:5432/postgres?sslmode=disable' up
+
+migrate-down:
+	migrate -path ./schema -database 'postgres://postgres:0000@localhost:5432/postgres?sslmode=disable' down
 
 .PHONY: test
 test:

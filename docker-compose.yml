@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  balance-service:
+    build: .
+    command: ./cmd/apiserver/wait-for-postgres.sh db ./balance-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=0000
+
+  db:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=0000
+    ports:
+      - 5432:5432

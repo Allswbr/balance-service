@@ -1,10 +1,9 @@
 .PHONY: build
 build:
-	# -o - записывает исполняемый файл, -v - печать имен пакетов по мере компиляции
-	go build -o balance-service -v ./cmd/apiserver
+	go build -o ./bin/balance-service -v ./cmd/apiserver
 
 run:
-	./balance-service
+	./bin/balance-service
 
 .PHONY: test
 test:

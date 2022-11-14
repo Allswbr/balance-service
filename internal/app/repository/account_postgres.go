@@ -320,7 +320,7 @@ func (b *AccountPostgres) notFirstTransfer(
 
 	// 4. Добавить соответствующую запись в таблицу историй транзакций
 	_, err = tx.Exec(
-		`INSERT INTO transactions_history (user_id, datetime, amount, start_deposit, end_deposit, event, message) `+
+		`INSERT INTO transaction (user_id, datetime, amount, start_deposit, end_deposit, event, message) `+
 			"VALUES ($1, $2, $3, $4, $5, $6, $7)",
 		toUserID, time.Now(), amount, toStartBalance, endBalance, "TRANSFER", toMsg,
 	)

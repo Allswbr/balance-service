@@ -22,18 +22,21 @@ func (h *Handler) InitRoutes() *gin.Engine {
 	// Основные роуты для работы с балансом
 	balance := router.Group("/balance")
 	{
-		balance.GET("", h.getUserAccountBalance)                         // Просмотр баланса
-		balance.POST("/deposit", h.depositUserAccount)                   // Пополнение
-		balance.POST("/reservation", h.reservationUserAccount)           // Резервирование
-		balance.POST("/confession", h.confessionOrder)                   // Подтверждение выручки
-		balance.POST("/transfer", h.transferMoneyBetweenUsers)           // Перевод
-		balance.GET("/transaction_history", h.getUserTransactionHistory) // История транзакций
-		balance.GET("/report-month-year", h.getOrdersYearMonth)          // Отчёт
+		balance.GET("", h.getUserAccountBalance)                  // Просмотр баланса
+		balance.POST("/deposit", h.depositUserAccount)            // Пополнение
+		balance.POST("/reservation", h.reservationUserAccount)    // Резервирование
+		balance.POST("/confession", h.confessionOrder)            // Подтверждение выручки
+		balance.POST("/transfer", h.transferMoneyBetweenUsers)    // Перевод
+		balance.GET("/transactions", h.getUserTransactionHistory) // История транзакций
+		balance.GET("/report-month-year", h.getOrdersYearMonth)   // Отчёт
 	}
 
-	// Дополнительные роуты для удобства работы с пользователями
-	router.POST("/users/auth/create-user", h.createUser) // Регистрация нового пользователя работает
-	router.GET("/users", h.getAllUsers)                  // Просмотр всех существующих пользователей работает
+	users := router.Group("/users")
+	{
+		// Дополнительные роуты для удобства работы с пользователями
+		users.POST("/create-user", h.createUser) // Регистрация нового пользователя
+		users.GET("", h.getAllUsers)             // Просмотр всех существующих пользователей
+	}
 
 	return router
 }

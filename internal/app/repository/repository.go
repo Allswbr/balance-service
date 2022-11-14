@@ -18,6 +18,8 @@ type Account interface {
 	DepositMoneyToUser(userID int64, amount float64, details string) error
 	ConfessionOrder(userID int64, serviceID int64, orderID int64, amount float64, details string) error
 	ReservationUserAccount(userID int64, serviceID int64, orderID int64, amount float64, details string) error
+	TransferMoneyBetweenUsers(fromUserID int64, toUserID int64, amount float64, details string) error
+	GetTransactionsHistory(userID int64) ([]*model.Transactions, error)
 }
 
 // Repository — отвечает за получение данных из внешних источников, такие как база данных, api, локальное хранилище и пр.

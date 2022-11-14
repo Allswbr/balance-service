@@ -3,6 +3,7 @@ package service
 import (
 	"errors"
 	"github.com/Allswbr/balance-service/internal/app/repository"
+	"github.com/Allswbr/balance-service/model"
 )
 
 // AccountService - структура, методы которой реализуют логику для работы с банковским счетом
@@ -42,4 +43,17 @@ func (b *AccountService) ConfessionOrder(userID int64, serviceID int64, orderID 
 		return errors.New("the amount must be greater than zero")
 	}
 	return b.repo.ConfessionOrder(userID, serviceID, orderID, amount, details)
+}
+
+// TransferMoneyBetweenUsers переводит amount денег со счета пользователя с fromUserID пользователю с toUserID
+func (b *AccountService) TransferMoneyBetweenUsers(fromUserID int64, toUserID int64, amount float64, details string) error {
+	if amount <= 0 {
+		return errors.New("the amount must be greater than zero")
+	}
+	return b.repo.TransferMoneyBetweenUsers(fromUserID, toUserID, amount, details)
+}
+
+// GetTransactionsHistory возвращает историю транзакций пользователя с userID
+func (b *AccountService) GetTransactionsHistory(userID int64) ([]*model.Transactions, error) {
+	return b.repo.GetTransactionsHistory(userID)
 }
